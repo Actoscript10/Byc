@@ -1,0 +1,195 @@
+<style>
+  .as_slider_main_block{
+    padding-top: {{ section.settings.padding-top-desk }}px;
+    padding-bottom: {{ section.settings.padding-bottom-desk }}px;
+  }
+  .as-slider-next-btn img{
+    width: {{ section.settings.next_btn_image_width }}%;
+  }
+
+  @media screen and (max-width: 768px){
+    .as_slider_main_block{
+      padding-top: {{ section.settings.padding-top-tab }}px;
+      padding-bottom: {{ section.settings.padding-bottom-tab }}px;
+    }
+  }
+
+  @media screen and (max-width: 425px){
+    .as_slider_main_block{
+      padding-top: {{ section.settings.padding-top-mbl }}px;
+      padding-bottom: {{ section.settings.padding-bottom-mbl }}px;
+    }
+  }
+</style>
+
+<section class="as_slider_main_block">
+  <div class="container-1770" style="--width-box-banner: 40%" data-width-banner="40">
+    <div class="asSliderMian_block">
+      <div>
+        <div class="swiper asSliderBanner">
+          <div class="swiper-wrapper">
+            {% for block in section.blocks %}
+              <div class="swiper-slide">
+                <div class="slider-image">
+                    <img src="{{ block.settings.slider_banner_image1 | img_url: '' }}" alt="banner_image1">
+                </div>
+                <div class="slider-image">
+                    <img src="{{ block.settings.slider_banner_image2 | img_url: '' }}" alt="banner_image2">
+                </div>
+                <div class="slider-image">
+                    <img src="{{ block.settings.slider_banner_image3 | img_url: '' }}" alt="banner_image3">
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="asSliderMian_right">
+        <div class="asSlider_right-inner">
+          <div class="asSliderPagination"></div>
+          <h2 class="asHeading"> {{ section.settings.banner-ttl }} </h2>
+          <div class="asSliderNext as-slider-next-btn">
+            <img src="{{ section.settings.next-arrow_image | img_url: '' }}" alt="">
+          </div>
+          <p class="as-desc"> {{ section.settings.banner-description }} </p>
+          <a href="{{ section.settings.btn-link }}" class="as-purches-btn"> {{ section.settings.button-txt }} </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% schema %}
+  {
+    "name": "Banner Slider",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "next-arrow_image",
+            "label": "Add Next Button Arrow"
+        },
+        {
+            "type": "text",
+            "id": "next_btn_image_width",
+            "label": "Add Image Width in (%)"
+        },
+        {
+            "type": "textarea",
+            "id": "banner-ttl",
+            "label": "Add Title"
+        },
+        {
+            "type": "textarea",
+            "id": "banner-description",
+            "label": "Add Description"
+        },
+        {
+            "type": "text",
+            "id": "button-txt",
+            "label": "Add Button Text"
+        },
+        {
+            "type": "url",
+            "id": "btn-link",
+            "label": "Link Button"
+        },
+        {
+            "type": "header",
+            "content": "Space Top"
+        },
+        {
+            "type": "range",
+            "id": "padding-top-desk",
+            "label": "Desktop",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "unit": "px",
+            "default": 50
+        },
+        {
+            "type": "range",
+            "id": "padding-top-tab",
+            "label": "Tablet",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "unit": "px",
+            "default": 50
+        },
+        {
+            "type": "range",
+            "id": "padding-top-mbl",
+            "label": "Mobile",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "unit": "px",
+            "default": 50
+        },
+        {
+            "type": "header",
+            "content": "Space Bottom"
+        },
+        {
+            "type": "range",
+            "id": "padding-bottom-desk",
+            "label": "Desktop",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "unit": "px",
+            "default": 50
+        },
+        {
+            "type": "range",
+            "id": "padding-bottom-tab",
+            "label": "Tablet",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "unit": "px",
+            "default": 50
+        },
+        {
+            "type": "range",
+            "id": "padding-bottom-mbl",
+            "label": "Mobile",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "unit": "px",
+            "default": 50
+        },
+    ],
+    "blocks": [
+      {
+        "type": "slider",
+        "name": "Slider Block",
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "slider_banner_image1",
+                "label": "Add Image 1"
+            },
+            {
+                "type": "image_picker",
+                "id": "slider_banner_image2",
+                "label": "Add Image 2"
+            },
+            {
+                "type": "image_picker",
+                "id": "slider_banner_image3",
+                "label": "Add Image 3"
+            }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "As Slider Banner"
+      }
+    ]
+  }
+{% endschema %}

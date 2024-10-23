@@ -1,0 +1,238 @@
+<style>
+  .as_collection_banner_main_block{
+    padding-top: {{ section.settings.pedding-top-desk }}px;
+    padding-bottom: {{ section.settings.pedding-botton-desk }}px;
+  }
+  .banner_content-inner{
+    width: {{ section.settings.content_width_desk }}%;
+  }
+
+  @media screen and (max-width: 1024px){
+    .banner_content-inner{
+      width: {{ section.settings.content_width_laptop }}%;
+    }
+  }
+
+  @media screen and (max-width: 768px){
+    .as_collection_banner_main_block{
+      padding-top: {{ section.settings.pedding-top-tab }}px;
+      padding-bottom: {{ section.settings.pedding-botton-tab }}px;
+    }
+    .as_two_banner {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .banner_content-inner{
+      width: {{ section.settings.content_width_tab }}%;
+    }
+  }
+
+  @media screen and (max-width: 425px){
+    .as_collection_banner_main_block{
+      padding-top: {{ section.settings.pedding-top-mbl }}px;
+      padding-bottom: {{ section.settings.pedding-botton-mbl }}px;
+    }
+    .banner_content-inner{
+      width: {{ section.settings.content_width_mbl }}%;
+    }
+  }
+</style>
+
+<section class="as_collection_banner_main_block">
+    <div class="container-1770" style="--width-box-banner: 40%" data-width-banner="40">
+        <div class="as_two_banner">
+            {% for block in section.blocks %}
+                <div class="as_banner-inner">
+                    <a href="{{ block.settings.collection_link_banner_image }}">
+                        <img src="{{ block.settings.as_banner_image | img_url: '' }}" class="banner-desk" alt="{{ banner_image }}">
+                        <img src="{{ block.settings.as_banner_image_mobile | img_url: '' }}" class="banner-mbl" alt="{{ banner_image }}">
+                    </a>
+                    <div class="banner_content" style="justify-content: {{ block.settings.content_horizontal_position }}; align-items: {{ block.settings.content_varticle_position }};">
+                        <div class="banner_content-inner">
+                            <p> {{ block.settings.banner_subttl }} </p>
+                            <h3> {{ block.settings.banner_heading }} </h3>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "as collection banner",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Top Space"
+      },
+      {
+          "type": "range",
+          "id": "pedding-top-desk",
+          "label": "Desktop",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "default": 0,
+          "unit": "px"
+      },
+      {
+          "type": "range",
+          "id": "pedding-top-tab",
+          "label": "Tablet",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "default": 0,
+          "unit": "px"
+      },
+      {
+          "type": "range",
+          "id": "pedding-top-mbl",
+          "label": "Mobile",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "default": 0,
+          "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Bottom Space"
+      },
+      {
+          "type": "range",
+          "id": "pedding-botton-desk",
+          "label": "Desktop",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "default": 0,
+          "unit": "px"
+      },
+      {
+          "type": "range",
+          "id": "pedding-botton-tab",
+          "label": "Tablet",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "default": 0,
+          "unit": "px"
+      },
+      {
+          "type": "range",
+          "id": "pedding-botton-mbl",
+          "label": "Mobile",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "default": 0,
+          "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Add Banner Content Width (%)"
+      },
+      {
+          "type": "text",
+          "id": "content_width_desk",
+          "label": "Desktop"
+      },
+      {
+          "type": "text",
+          "id": "content_width_laptop",
+          "label": "Laptop"
+      },
+      {
+          "type": "text",
+          "id": "content_width_tab",
+          "label": "Tablet"
+      },
+      {
+          "type": "text",
+          "id": "content_width_mbl",
+          "label": "Mobile"
+      },
+    ],
+    "blocks": [
+        {
+            "type": "as_banner",
+            "name": "As Banner",
+            "settings": [
+                {
+                    "type": "url",
+                    "id": "collection_link_banner_image",
+                    "label": "Link Your Collection"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "as_banner_image",
+                    "label": "Add Banner Image"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "as_banner_image_mobile",
+                    "label": "Add Mobile Banner Image"
+                },
+                {
+                    "type": "textarea",
+                    "id": "banner_heading",
+                    "label": "Add Banner Title"
+                },
+                {
+                    "type": "textarea",
+                    "id": "banner_subttl",
+                    "label": "Add Banner Sub Title"
+                },
+                {
+                    "type": "select",
+                    "id": "content_horizontal_position",
+                    "label": "Content: Position",
+                    "default": "left",
+                    "options": [
+                        {
+                            "value": "left",
+                            "label": "Left"
+                        },
+                        {
+                            "value": "center",
+                            "label": "Center"
+                        },
+                        {
+                            "value": "right",
+                            "label": "Right"
+                        }
+                    ]
+                },
+                {
+                    "type": "select",
+                    "id": "content_varticle_position",
+                    "label": "Content: Position",
+                    "default": "center",
+                    "options": [
+                        {
+                            "value": "flex-start",
+                            "label": "Top"
+                        },
+                        {
+                            "value": "center",
+                            "label": "Center"
+                        },
+                        {
+                            "value": "flex-end",
+                            "label": "Bottom"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "As Collection Banner"
+        }
+    ]
+}
+{% endschema %}

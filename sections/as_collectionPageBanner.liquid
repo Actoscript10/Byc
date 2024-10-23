@@ -1,0 +1,251 @@
+<style>
+    .as_collection_page_banner_main{
+        width: 100%;
+        position: relative;
+        padding-top: {{ section.settings.space-top-desk }}px;
+        padding-bottom: {{ section.settings.space-bottom-desk }}px;
+    }
+    .as_collection_page_banner_main img{
+      width: 100%;
+    }
+    .as_collection_page_banner-overlay{
+        background-color: #0000008f;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        align-items: {{ section.settings.content_vertical_position }};
+        justify-content: {{ section.settings.content_horizontal_position }};
+    }
+    .as_collection_page_banner-overlay p{
+        text-align: {{ section.settings.content_align }};
+        color: {{ section.settings.font_color }};
+        font-size: {{ section.settings.font_size_desk }}px;
+    }
+    @media screen and (max-width: 768px){
+        .as_collection_page_banner_main{
+            padding-top: {{ section.settings.space-top-tab }}px;
+            padding-bottom: {{ section.settings.space-bottom-tab }}px;
+        }
+    }
+
+    @media screen and (max-width: 425px){
+        .as_collection_page_banner_main{
+            padding-top: {{ section.settings.space-top-mbl }}px;
+            padding-bottom: {{ section.settings.space-bottom-mbl }}px;
+        }
+    }
+</style>
+
+<section class="as_collection_page_banner_main">
+    <img src="{{ section.settings.collection_banner_image | img_url: '' }}" class="banner-desk" alt="{{ collection.title }}">
+    <img src="{{ section.settings.collection_banner_mobile_image | img_url: '' }}" class="banner-mbl" alt="{{ collection.title }}">
+    <div class="as_collection_page_banner-overlay bg-overlay">
+        <p> {{ section.settings.content-txt }} </p>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "AsCollectionBanner Main",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Collection Banner"
+        },
+        {
+            "type": "image_picker",
+            "id": "collection_banner_image",
+            "label": "Add Banner"
+        },
+        {
+            "type": "image_picker",
+            "id": "collection_banner_mobile_image",
+            "label": "Add Mobile Banner"
+        },
+        {
+            "type": "header",
+            "content": "Banner Content"
+        },
+        {
+            "type": "textarea",
+            "id": "content-txt",
+            "label": "Add Your Content"
+        },
+        {
+            "type": "color",
+            "id": "font_color",
+            "label": "Select Font Color",
+            "default": "#ffffff"
+        },
+        {
+            "type": "header",
+            "content": "Content Font Size"
+        },
+        {
+            "type": "range",
+            "id": "font_size_desk",
+            "label": "Desktop",
+            "min": 0,
+            "max": 76,
+            "default": 16,
+            "step": 1,
+            "unit": "px"
+        },
+        {
+            "type": "range",
+            "id": "font_size_mbl",
+            "label": "Mobile",
+            "min": 0,
+            "max": 76,
+            "default": 16,
+            "step": 1,
+            "unit": "px"
+        },
+        {
+            "type": "header",
+            "content": "Text Alignment"
+        },
+        {
+            "type": "select",
+            "id": "content_align",
+            "label": "Content: Position",
+            "default": "center",
+            "options": [
+                {
+                    "value": "left",
+                    "label": "Left"
+                },
+                {
+                    "value": "center",
+                    "label": "Center"
+                },
+                {
+                    "value": "right",
+                    "label": "Right"
+                }
+            ]
+        },
+        {
+            "type": "header",
+            "content": "Content Alignment"
+        },
+        {
+            "type": "select",
+            "id": "content_horizontal_position",
+            "label": "Content: Position",
+            "default": "center",
+            "options": [
+                {
+                    "value": "flex-start",
+                    "label": "Left"
+                },
+                {
+                    "value": "center",
+                    "label": "Center"
+                },
+                {
+                    "value": "flex-end",
+                    "label": "Right"
+                }
+            ]
+        },
+        {
+            "type": "select",
+            "id": "content_vertical_position",
+            "label": "Content: Position",
+            "default": "center",
+            "options": [
+                {
+                    "value": "flex-start",
+                    "label": "Top"
+                },
+                {
+                    "value": "center",
+                    "label": "Center"
+                },
+                {
+                    "value": "flex-end",
+                    "label": "Bottom"
+                }
+            ]
+        },
+        {
+            "type": "header",
+            "content": "Top Specing"
+        },
+        {
+            "type": "range",
+            "id": "space-top-desk",
+            "label": "Desktop",
+            "min": 0,
+            "max": 100,
+            "default": 0,
+            "step": 5,
+            "unit": "px"
+        },
+        {
+            "type": "range",
+            "id": "space-top-tab",
+            "label": "Tablet",
+            "min": 0,
+            "max": 100,
+            "default": 0,
+            "step": 5,
+            "unit": "px"
+        },
+        {
+            "type": "range",
+            "id": "space-top-mbl",
+            "label": "Mobile",
+            "min": 0,
+            "max": 100,
+            "default": 0,
+            "step": 5,
+            "unit": "px"
+        },
+        {
+            "type": "header",
+            "content": "Bottom Specing"
+        },
+        {
+            "type": "range",
+            "id": "space-bottom-desk",
+            "label": "Desktop",
+            "min": 0,
+            "max": 100,
+            "default": 0,
+            "step": 5,
+            "unit": "px"
+        },
+        {
+            "type": "range",
+            "id": "space-bottom-tab",
+            "label": "Tablet",
+            "min": 0,
+            "max": 100,
+            "default": 0,
+            "step": 5,
+            "unit": "px"
+        },
+        {
+            "type": "range",
+            "id": "space-bottom-mbl",
+            "label": "Mobile",
+            "min": 0,
+            "max": 100,
+            "default": 0,
+            "step": 5,
+            "unit": "px"
+        }
+
+    ],
+    "presets": [
+        {
+            "name": "AsCollectionBanner Main"
+        }
+    ]
+}
+{% endschema %}

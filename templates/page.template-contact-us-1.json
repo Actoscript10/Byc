@@ -1,0 +1,79 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "google-map": {
+      "type": "google-map",
+      "settings": {
+        "show_custom_map": true,
+        "container": "fullwidth",
+        "block_title": "",
+        "block_text": "",
+        "block_align": "center",
+        "block_max_width": 300,
+        "btn_text": "",
+        "btn_text_color": "",
+        "btn_border_color": "",
+        "btn_bg_color": "",
+        "btn_bg_color_gradient": "",
+        "btn_text_color_hover": "",
+        "btn_border_color_hover": "",
+        "btn_bg_color_hover": "",
+        "btn_bg_color_hover_gradient": "",
+        "btn_max_width": 205,
+        "btn_link": "",
+        "block_content": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3709.5865100552705!2d73.02857627614533!3d21.602057567839545!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be023babb76ca67%3A0x6c5793834806be9a!2sPanchvati%20Rd%2C%20Gujarat%20393001!5e0!3m2!1sen!2sin!4v1727776196965!5m2!1sen!2sin\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>",
+        "mg_top_desktop": 0,
+        "mg_top_tablet": 0,
+        "mg_top_mobile": 0,
+        "mg_bottom_desktop": 30,
+        "mg_bottom_tablet": 0,
+        "mg_bottom_mobile": 0
+      }
+    },
+    "main": {
+      "type": "main-contact-us-1",
+      "custom_css": [
+        ".icon svg {width: 20px !important; height: 20px !important;}",
+        ".button.button--primary {background-color: #000;}",
+        ".button.button--primary:hover {background-color: #0000;}"
+      ],
+      "settings": {
+        "show_breadcrumb": true,
+        "breadcrumb_alignment": "left",
+        "breadcrumb_bg": "",
+        "breadcrumb_gradient": "",
+        "breadcrumb_bg_mb": "#f6f6f6",
+        "breadcrumb_gradient_mb": "",
+        "show_page_title": true,
+        "page_title_alignment": "left",
+        "container": "1170",
+        "mg_top_desktop": 0,
+        "mg_top_tablet": 0,
+        "mg_top_mobile": 0,
+        "mg_bottom_desktop": 0,
+        "mg_bottom_tablet": 0,
+        "mg_bottom_mobile": 0,
+        "contact_form_text": "<span>Have a question or comment?\n<br>\nUse the form below to send us a message or contact us by mail at:</span>",
+        "show_contact_info": true,
+        "contact_info_title": "Get In Touch!",
+        "contact_info_text": "We'd love to hear from you - please \nuse the form to send us your message or ideas.",
+        "contact_info_address": "<p style=\"line-height: 26px;margin-bottom: 9px\">\nH- 3213 / 149, GIDC Ankleshwar, \n<br>Opp. Parashmani Chowkdi, Panchvati, Bharuch,<br> Gujarat, India - 393002\n</p>",
+        "contact_info_content_1": "<p style=\"line-height: 30px; margin-bottom: 0px;margin-top: 5px;\">\n<span class=\"icon\">\n<svg style=\"width:20px;\" height:20px relative top:0px xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewbox=\"0 0 15 15\" version=\"1.1\" fill=\"#000000\">\n<g id=\"SVGRepo_bgCarrier\" stroke-width=\"0\"></g>\n<g id=\"SVGRepo_tracerCarrier\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></g>\n<g id=\"SVGRepo_iconCarrier\"> <title>call [#192]</title> <desc>Created with Sketch.</desc> <defs> </defs> <g id=\"Page-1\" stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\"> <g id=\"Dribbble-Light-Preview\" transform=\"translate(-103.000000, -7321.000000)\" fill=\"#000000\"> <g id=\"icons\" transform=\"translate(56.000000, 160.000000)\"> <path d=\"M61.7302966,7173.99596 C61.2672966,7175.40296 59.4532966,7176.10496 58.1572966,7175.98796 C56.3872966,7175.82796 54.4612966,7174.88896 52.9992966,7173.85496 C50.8502966,7172.33496 48.8372966,7169.98396 47.6642966,7167.48896 C46.8352966,7165.72596 46.6492966,7163.55796 47.8822966,7161.95096 C48.3382966,7161.35696 48.8312966,7161.03996 49.5722966,7161.00296 C50.6002966,7160.95296 50.7442966,7161.54096 51.0972966,7162.45696 C51.3602966,7163.14196 51.7112966,7163.84096 51.9072966,7164.55096 C52.2742966,7165.87596 50.9912966,7165.93096 50.8292966,7167.01396 C50.7282966,7167.69696 51.5562966,7168.61296 51.9302966,7169.09996 C52.6632966,7170.05396 53.5442966,7170.87696 54.5382966,7171.50296 C55.1072966,7171.86196 56.0262966,7172.50896 56.6782966,7172.15196 C57.6822966,7171.60196 57.5872966,7169.90896 58.9912966,7170.48196 C59.7182966,7170.77796 60.4222966,7171.20496 61.1162966,7171.57896 C62.1892966,7172.15596 62.1392966,7172.75396 61.7302966,7173.99596 C61.4242966,7174.92396 62.0362966,7173.06796 61.7302966,7173.99596\" id=\"call-[#192]\"> </path> </g> </g> </g> </g>\n</svg>\n</span>\n<span style=\"margin-left: 7px\"><a href=\"tel:9157684554\">+91 91576 84554</a></span>\n</p>\n<p style=\"line-height:30px; margin-top: 0\">\n<span class=\"icon\">\n<svg width=\"20px\" height=\"20px\" viewbox=\"0 -3.5 32 32\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:sketch=\"http://www.bohemiancoding.com/sketch/ns\" fill=\"#000000\"><g id=\"SVGRepo_bgCarrier\" stroke-width=\"0\"></g><g id=\"SVGRepo_tracerCarrier\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></g><g id=\"SVGRepo_iconCarrier\"> <title>mail</title> <desc>Created with Sketch Beta.</desc> <defs> </defs> <g id=\"Page-1\" stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\" sketch:type=\"MSPage\"> <g id=\"Icon-Set-Filled\" sketch:type=\"MSLayerGroup\" transform=\"translate(-414.000000, -261.000000)\" fill=\"#000000\"> <path d=\"M430,275.916 L426.684,273.167 L415.115,285.01 L444.591,285.01 L433.235,273.147 L430,275.916 L430,275.916 Z M434.89,271.89 L445.892,283.329 C445.955,283.107 446,282.877 446,282.634 L446,262.862 L434.89,271.89 L434.89,271.89 Z M414,262.816 L414,282.634 C414,282.877 414.045,283.107 414.108,283.329 L425.147,271.927 L414,262.816 L414,262.816 Z M445,261 L415,261 L430,273.019 L445,261 L445,261 Z\" id=\"mail\" sketch:type=\"MSShapeGroup\"> </path> </g> </g> </g></svg></span>\n<span style=\"margin-left: 7px\"><a href=\"mailto:Info.byclife@gmail.com\">Info.byclife@gmail.com</a></span>\n</p>",
+        "contact_info_content_2": "<p>Opening Hours:\n<br>\nMON to SAT: \n9:00AM - 10:00PM\n<br>\nSUN: 10:00AM - 6:00PM</p>",
+        "enable_border_top": true
+      }
+    }
+  },
+  "order": [
+    "google-map",
+    "main"
+  ]
+}

@@ -1,0 +1,289 @@
+{{ 'customer.css' | asset_url | stylesheet_tag }}
+{%- liquid
+  assign container = section.settings.container
+  assign padding_full_width = section.settings.padding_full_width
+-%}
+<style>
+    .return-popup-content {
+        position: relative;
+        padding: 40px 60px;
+        background: #fff;
+        border-radius: 16px;
+        max-width: 565px;
+        width: 100%;
+    }
+
+    .return-popup-close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .return-popup-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+    }
+    .return-popup {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 999;
+        background: #00000047;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .form-input-block{
+        display: flex;
+        align-items: stretch;
+        border: 1px solid #456675;
+        padding-right: 4px;
+        justify-content: stretch;
+        margin-bottom: 18px;
+    }
+    .return-form-label{
+        padding: 5px 10px;
+        background: #456675;
+        color: #fff;
+        text-wrap: nowrap;
+    }
+    .return-form-input{
+        border: 0;
+        width: 100%;
+        padding: 5px 10px;
+    }
+    .return-massage{
+        width: 100%;
+        border: 0;
+    }
+    .status-tag {
+        display: inline-block;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .status-tag.complete {
+        background-color: #28a745;
+        color: #fff;
+    }
+
+    .status-tag.cancelled {
+        background-color: #dc3545;
+        color: #fff;
+    }
+
+    .status-tag.returned {
+        background-color: #ffc107;
+        color: #000;
+    }
+
+    .status-tag.pending {
+        background-color: #17a2b8;
+        color: #fff;
+    }
+
+    /* Media Queries */
+    @media (min-width: 1025px) {
+        .section-block-{{section.id}} .container-full {
+            padding-left: {{ padding_full_width | append: 'px' }};
+            padding-right: {{ padding_full_width | append: 'px' }};
+        }
+    }
+    @media (max-width: 1024px) {
+        .section-block-{{section.id}} .container-full {
+            overflow: hidden;
+        }
+        .halo-page-header {
+            padding-left: 25px;
+            padding-right: 15px;
+        }
+        .halo-page-content {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+    }
+    @media (max-width: 551px) {
+        .halo-page-header {
+            padding-left: 0;
+            padding-right: 0;
+        }
+        .halo-page-content {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .return-popup-content{
+            padding: 20px;
+        }
+    }
+</style>
+
+<div class="account-page my-account-page section-block-{{section.id}}">
+    <div class="{% if container == '1170' %}container-1170{% elsif container == '1770' %}container-1770{% elsif container == 'fullwidth'%}container-full{% else %}container{% endif %}">
+        <h1 class="page-header">{{ 'customer.account.my_account' | t }}</h1>
+        <div class="halo-page-content">
+        <div class="account">
+            <div class="account-body">
+            <!-- Orders Section -->
+            <div class="account-item">
+                <h2 class="account-title text-left">{{ 'customer.orders.title' | t }}</h2>
+                <div class="account-content">
+                {% paginate customer.orders by 20 %}
+                    {%- if customer.orders.size > 0 -%}
+                    <table role="table" class="order-history">
+                        <thead role="rowgroup">
+                        <tr role="row">
+                            <th id="ColumnOrder">{{ 'customer.orders.order_number' | t }}</th>
+                            <th id="ColumnDate">{{ 'customer.orders.date' | t }}</th>
+                            <th id="ColumnPayment">{{ 'customer.orders.payment_status' | t }}</th>
+                            <th id="ColumnFulfillment">{{ 'customer.orders.fulfillment_status' | t }}</th>
+                            <th id="ColumnTotal">{{ 'customer.orders.total' | t }}</th>
+                            <th id="ColumnStatus">{{ 'Order Status' | t }}</th> <!-- New Column -->
+                        </tr>
+                        </thead>
+                        <tbody role="rowgroup">
+                        {%- for order in customer.orders -%}
+                            <tr role="row">
+                                <td id="RowOrder" headers="ColumnOrder">
+                                    <a href="{{ order.customer_url }}" aria-label="{{ 'customer.orders.order_number_link' | t: number: order.name }}">{{ order.name }}</a>
+                                </td>
+                                <td headers="RowOrder ColumnDate">{{ order.created_at | time_tag: format: 'date' }}</td>
+                                <td headers="RowOrder ColumnPayment">{{ order.financial_status_label }}</td>
+                                <td headers="RowOrder ColumnFulfillment">{{ order.fulfillment_status_label }}</td>
+                                <td headers="RowOrder ColumnTotal">{{ order.total_price | money_with_currency }}</td>
+                                <td headers="RowOrder ColumnStatus">
+                                    {% if order.financial_status == 'paid' and order.cancelled_at == blank %}
+                                        <span class="status-tag complete">Complete</span>
+                                    {% elsif order.cancelled_at != blank %}
+                                        <span class="status-tag cancelled">Cancelled</span>
+                                    {% elsif order.fulfillment_status == 'pending' %}
+                                        <span class="status-tag pending">Pending</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {%- endfor -%}
+                        </tbody>
+                    </table>
+                    <div class="account-action">
+                        <button class="button button--primary" id="return-order-button">Return Order</button>
+                    </div>
+                    {%- else -%}
+                    <div class="account-desc text-left">
+                        {{ 'customer.orders.none' | t }}
+                    </div>
+                    {%- endif -%}
+                {% endpaginate %}
+                </div>
+            </div>
+
+            <!-- Return Order Popup -->
+            <div id="return-popup" class="return-popup" style="display: none;">
+                <div class="return-popup-content">
+                    <div class="return-popup-close" id="close-popup">{%- render 'as-icon-xmark' -%}</div>
+                    <div class="form-head">
+                        <h3>Return Order Form</h3>
+                    </div>
+                    <form id="return-order-form">
+                        <div class="form-input-block">
+                            <label for="order-number" class="return-form-label">Order Number:</label>
+                            <input type="text" id="order-number" name="order-number" class="return-form-input" required>
+                        </div>
+                        
+                        <div class="form-input-block">
+                            <label for="return-reason" class="return-form-label">Reason for Return:</label>
+                            <textarea id="return-reason" name="return-reason" required></textarea>
+                        </div>
+                        <div class="form-input-btn-block">  
+                            <button type="submit" class="button button--primary" class="return-massage">Submit Return</button>
+                        </div>
+                    </form>
+
+                    
+
+                </div>
+                </div>
+
+                <script>
+                    // Show popup when return order button is clicked
+                    document.getElementById('return-order-button').addEventListener('click', function () {
+                        document.getElementById('return-popup').style.display = 'flex';
+                    });
+
+                    // Hide popup when close button is clicked
+                    document.getElementById('close-popup').addEventListener('click', function () {
+                        document.getElementById('return-popup').style.display = 'none';
+                    });
+
+                    // Handle form submission
+                    document.getElementById("return-order-form").addEventListener("submit", function(event) {
+                        event.preventDefault();
+                        alert("Return form submitted!");
+                        document.getElementById("return-popup").style.display = "none";
+                    });
+                </script>
+                <script>
+                        document.getElementById('return-order-form').addEventListener('submit', function(e) {
+                            e.preventDefault(); // Prevents the form from submitting in the default way
+                            
+                            // Get form values
+                            const orderNumber = document.getElementById('order-number').value;
+                            const returnReason = document.getElementById('return-reason').value;
+
+                            // Construct the WhatsApp message
+                            const message = `Order Number: ${orderNumber}\nReason for Return: ${returnReason}`;
+
+                            // WhatsApp URL
+                            const whatsappUrl = `https://wa.me/919157684554?text=${encodeURIComponent(message)}`;
+
+                            // Open WhatsApp with the message
+                            window.open(whatsappUrl, '_blank');
+                        });
+                    </script>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+{% schema %}
+{
+  "name": "Account",
+  "settings": [
+    {
+      "type": "select",
+      "id": "container",
+      "label": "Container",
+      "default": "container",
+      "options": [
+        { "value": "container", "label": "Container" },
+        { "value": "1170", "label": "1170px" },
+        { "value": "1770", "label": "1770px" },
+        { "value": "fullwidth", "label": "Full Width" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "padding_full_width",
+      "label": "Full Width Padding",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0
+    }
+  ]
+}
+{% endschema %}

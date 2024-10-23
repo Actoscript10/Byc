@@ -1,0 +1,102 @@
+<style>
+    .information-section{
+        padding: 70px 0;
+        background-color: #0000;
+    }
+    .info-link-icon svg{
+        width: 20px;
+        height: 20px;
+    }
+    .info-link{
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 12px;
+    }
+    .info-rich-text p{
+        margin: 0;
+    }
+    @media only screen and (max-width: 1024px){
+        
+    }
+    @media only screen and (max-width: 768px){
+        .information-section{
+            padding: 50px 0;
+        }
+    }
+    @media only screen and (max-width: 425px){
+        
+    }
+</style>
+
+<section class="information-section">
+    <div class="container-1170">
+        <div class="info-inner">
+            {%- for block in section.blocks -%}
+                {%- case block.type -%}
+                    {%- when 'title' -%}
+                        <h2 class="info-title">{{ block.settings.info_title }}</h2>
+                    {%- when 'link' -%}
+                        <div class="info-link-main-block">
+                            <a href="{{ block.settings.link_url }}" class="info-link">
+                                <div class="info-link-icon">{{ block.settings.svg_icon }}</div>
+                                <span class="info-rich-text">{{ block.settings.link_title }}</span>
+                            </a>
+                        </div>        
+                {%- endcase -%}
+            {%- endfor -%}
+            
+        </div>
+    </div>
+</section>
+
+{% schema %}
+  {
+    "name": "As Information",
+    "tag": "section",
+    "settings": [
+        
+    ],
+    "blocks": [
+        {
+            "type": "title",
+            "name": "Title",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "info_title",
+                    "label": "Title"
+                }
+            ]
+        },
+        {
+            "type": "link",
+            "name": "Link",
+            "settings": [
+                {
+                  "type": "url",
+                  "id": "link_url",
+                  "label": "Add link URL"
+                },
+                {
+                  "type": "html",
+                  "id": "svg_icon",
+                  "label": "Add SVG Icon"
+                },
+                {
+                  "type": "richtext",
+                  "id": "link_title",
+                  "label": "Add Link Title"
+                }
+            ]
+        }
+    ],
+    "presets": [
+      {
+        "name": "As Information",
+        "settings": {
+        }
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,29 @@
+/*// =============================================================================
+// Ella Custom CSS - Customize The Style For Layout
+// =============================================================================
+
+// =============================================================================
+//
+// IMPORTANT DISCLAIMER
+// Shopify is notifying shop owners about the need to convert scss files to css files.
+// Please use only CSS to style the layout.
+//
+// =============================================================================*/
+
+.header__icon--search svg{
+  width: 22px;
+  height: 22px;
+}
+.price-item--regular{
+  color: #696969; 
+}
+@media only screen and (max-width: 425px){
+  .card-title{
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .price-item{
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
